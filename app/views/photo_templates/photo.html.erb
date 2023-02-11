@@ -1,0 +1,40 @@
+<h1>Photo Details</h1>
+
+<dl>
+  <dt>Image</dt>
+  <dd><img src="<%= @photo.image %>" alt="photo"></dd>
+
+  <dt>Caption</dt>
+  <dd><%= @photo.caption %></dd>
+
+  <dt>Owner</dt>
+  <dd><%= @photo.poster.username %></dd>
+
+  <dt>Posted</dt>
+  <dd><%= @photo.created_at %></dd>
+
+  <dt>Edit photo</dt>
+  <dd></dd>
+
+  <dt>Delete photo</dt>
+  <dd></dd>
+</dl>
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+
+  <% @photo.comments.each do |comment| %>
+    <tr>
+      <td><%= comment.commenter.username %></td>
+      <td><%= comment.body %></td>
+      <td><%= comment.created_at %></td>
+  <% end %>
+</table>
+
+<h3>Add a new comment</h3>
