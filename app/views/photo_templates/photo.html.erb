@@ -14,7 +14,20 @@
   <dd><%= @photo.created_at %></dd>
 
   <dt>Edit photo</dt>
-  <dd></dd>
+  <dd>
+    <form action="/update_photo/<%= @photo.id %>">
+      <label for="image">Image</label>
+      <input id="image" name="image" type="text" placeholder="Enter a url for the image" value="<%= @photo.image %>">
+
+      <label for="caption">Caption</label>
+      <textarea id="caption" name="caption" placeholder="Enter a caption for the photo"><%= @photo.caption %></textarea>
+
+      <label for="owner_id">Owner ID</label>
+      <input id="owner_id" name="owner_id" type="text" placeholder="Enter an ID of the User" value="<%= @photo.owner_id %>">
+
+      <button>Update photo</button>
+    </form>
+  </dd>
 
   <dt>Delete photo</dt>
   <dd><a href="/delete_photo/<%= @photo.id %>">Delete this photo</a></dd>
