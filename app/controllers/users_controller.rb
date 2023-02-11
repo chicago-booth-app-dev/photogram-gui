@@ -8,10 +8,27 @@ class UsersController < ApplicationController
     username = params.fetch("path_username")
     @user = User.where({ :username => username }).first
 
-    if @user == nil
-      redirect_to("/404")
-    else
-      render({ :template => "user_templates/user.html.erb" })
-    end
+    render({ :template => "user_templates/user.html.erb" })
+  end
+
+  def add
+    username = params.fetch("username")
+
+    user = User.new
+    user.username = username
+    user.save
+
+    redirect_to("/users/" + user.username)
+  end
+
+  def update
+    username = params.fetch("username")
+    user_id = params.fetch("user_id")
+
+    user = User.where({ :id => user_id }).first
+    user.username = username
+    user.save
+
+    redirect_to("/users/" + user.username)
   end
 end
